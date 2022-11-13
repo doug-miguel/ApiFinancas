@@ -1,5 +1,7 @@
 const app = require('./app');
 const Loaders = require('./loaders')
 
+const port = process.env.PORT || 3003
+
 Loaders.start();
-app.listen(3000);
+app.listen(port);

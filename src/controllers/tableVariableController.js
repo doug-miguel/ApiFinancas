@@ -40,7 +40,6 @@ class VariableController {
     async deleteTableVariable(req, res) {
         const id = req.params.id
         const tableVariable = await TableVariable.findById(id)
-		console.log("TCL: VariableController -> deleteTableVariable -> tableVariable", tableVariable)
         if (!tableVariable) {
             return res.status(404).json({ message: "Table não enconstrado!" });
         }
