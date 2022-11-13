@@ -45,6 +45,7 @@ class UserController {
     async login(req, res) {
         const {email, password} = req.body;
         const user = await UserModel.findOne({ email });
+        
         //verificar se email foi preechido
         if (!email) {
             return res.status(422).json({ message: "Email é obrigatório" });
