@@ -9,6 +9,8 @@ const routes = Router();
 // Rotas Auth
 routes.post('/auth/register', authController.create);
 
+routes.post('/auth/update', authController.update);
+
 routes.post('/login', authController.login);
 
 routes.delete('/auth/delete/:id', authController.delete);

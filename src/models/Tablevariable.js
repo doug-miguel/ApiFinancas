@@ -16,7 +16,8 @@ const TableVariable = new Schema({
                 default: Date.now,
             }
         }
-    ]
+    ],
+
 })
 
 const TBVariable = mongoose.model('TB_Variable', TableVariable);

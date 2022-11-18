@@ -1,7 +1,6 @@
 const TableFixend = require('../models/Tablefixend');
 
 class FixendController {
-
     async consultTableFixend(req, res) {
         const tableFixend = await TableFixend.find();
         try {

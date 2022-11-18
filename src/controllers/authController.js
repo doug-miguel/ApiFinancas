@@ -2,7 +2,6 @@ const UserModel = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 class UserController {
     async create(req, res) {
         const { name, email, password } = req.body;
@@ -40,6 +39,39 @@ class UserController {
             return res.status(500).json({message: "Erro no servidor, tente novamente mais tarde!"});
         }
 
+    }
+
+    async update(req, res) {
+        const { id, name, email, password } = req.body;
+        const userExists = await UserModel.findById(id);
+        const emailExists = await UserModel.findOne({ email: email });
+        //verificar se nome foi preechido
+        if (!name) {
+            return res.status(422).json({ message: "Nome é obrigatório" });
+        }
+        //verificar se email esta em uso
+        if (emailExists?.email) {
+            return res.status(422).json({ message: "Email já esta em uso" });
+        }
+        //verificar se senha foi preechido
+        if (!password) {
+            return res.status(422).json({ message: "Senha é obrigatório" });
+        }
+        
+        const salt = await bcrypt.genSalt(12);
+        const passwordHash = await bcrypt.hash(password, salt);
+
+        const user = {
+            name,
+            email,
+            password: passwordHash,
+        };
+        try {
+            await UserModel.updateOne(userExists, user);
+            return res.status(200).json({ message: "Usuário alterado com sucesso!" });
+        } catch(error) {
+            return res.status(500).json({message: "Erro no servidor, tente novamente mais tarde!"});
+        }
     }
 
     async login(req, res) {

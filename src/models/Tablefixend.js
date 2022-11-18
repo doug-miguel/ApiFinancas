@@ -7,6 +7,7 @@ const TableFixend = new Schema({
         id: String,
         creatorName: String,
     },
+    amount: String,
     fixend: [
         {
             item: String,
