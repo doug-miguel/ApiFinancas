@@ -14,9 +14,9 @@ routes.post('/login', authController.login);
 routes.delete('/auth/delete/:id', authController.delete);
 
 // Rotas TableVariable
-routes.post('/tableVariable/update', variableController.updateVariable);
-
 routes.get('/tableVariable', variableController.consultTableVariable);
+
+routes.post('/tableVariable/update', variableController.updateVariable);
 
 routes.delete('/tableVariable/delete/:id', variableController.deleteTableVariable);
 
