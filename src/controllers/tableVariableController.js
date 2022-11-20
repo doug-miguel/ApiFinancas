@@ -1,4 +1,5 @@
 const TableVariable = require('../models/Tablevariable');
+const UserModel = require('../models/User');
 
 class VariableController {
     async consultTableVariable(req, res) {
@@ -13,12 +14,20 @@ class VariableController {
 
     async createTableVariable(req, res) {
         const { variable } = req.body
+        const idUser = req.body.auth.id;
+        const tableVariable = await UserModel.findById(idUser);
+        if (!tableVariable) {
+            return res.status(404).json({ message: "Usúario sem permição ou inexistente!" });
+        }
         if (variable.length === 0) {
             return res.status(400).json({ message: "Sem dados na tabela!" });
         }
         try {
             const createdTableVari = await TableVariable.create(req.body);
-            return res.status(200).json({ message: "Tabela criada com sucesso!",  createdTableVari});
+            const idTable = createdTableVari._id
+            await tableVariable.updateOne({idTableVariable: idTable});
+            const updateTableFixend = await UserModel.findById(idUser, "idTableFixend").exec();
+            return res.status(200).json({ message: "Tabela criada com sucesso!",  createdTableVari, updateTableFixend});
         } catch {
             return res.status(500).json({message: "Erro no servidor ao criar, tente novamente mais tarde!"});
         }
