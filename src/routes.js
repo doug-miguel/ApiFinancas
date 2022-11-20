@@ -16,22 +16,22 @@ routes.post('/login', authController.login);
 routes.delete('/auth/delete/:id', authController.delete);
 
 // Rotas TableVariable
-routes.get('/tableVariable/:id', variableController.consultTableVariable);
+routes.get('/tablevariable/:id', variableController.consultTableVariable);
 
-routes.post('/tableVariable/create', variableController.createTableVariable);
+routes.post('/tablevariable/create', variableController.createTableVariable);
 
-routes.post('/tableVariable/update', variableController.updateTableVariable);
+routes.post('/tablevariable/update', variableController.updateTableVariable);
 
-routes.delete('/tableVariable/delete/:id', variableController.deleteTableVariable);
+routes.delete('/tablevariable/delete/:id', variableController.deleteTableVariable);
 
 // Rotas TableFixend
-routes.get('/tableFixend/:id', fixendController.consultTableFixend);
+routes.get('/tablefixend/:id', fixendController.consultTableFixend);
 
-routes.post('/tableFixend/create', fixendController.createTableFixend);
+routes.post('/tablefixend/create', fixendController.createTableFixend);
 
-routes.post('/tableFixend/update', fixendController.updateTableFixend);
+routes.post('/tablefixend/update', fixendController.updateTableFixend);
 
-routes.delete('/tableFixend/delete/:id', fixendController.deleteTableFixend);
+routes.delete('/tablefixend/delete/:id', fixendController.deleteTableFixend);
 
 
  
