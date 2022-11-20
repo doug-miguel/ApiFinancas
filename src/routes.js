@@ -9,19 +9,25 @@ const routes = Router();
 // Rotas Auth
 routes.post('/auth/register', authController.create);
 
+routes.post('/auth/update', authController.update);
+
 routes.post('/login', authController.login);
 
 routes.delete('/auth/delete/:id', authController.delete);
 
 // Rotas TableVariable
-routes.post('/tableVariable/update', variableController.updateVariable);
+routes.get('/tableVariable/:id', variableController.consultTableVariable);
 
-routes.get('/tableVariable', variableController.consultTableVariable);
+routes.post('/tableVariable/create', variableController.createTableVariable);
+
+routes.post('/tableVariable/update', variableController.updateTableVariable);
 
 routes.delete('/tableVariable/delete/:id', variableController.deleteTableVariable);
 
 // Rotas TableFixend
-routes.get('/tableFixend', fixendController.consultTableFixend);
+routes.get('/tableFixend/:id', fixendController.consultTableFixend);
+
+routes.post('/tableFixend/create', fixendController.createTableFixend);
 
 routes.post('/tableFixend/update', fixendController.updateTableFixend);
 
