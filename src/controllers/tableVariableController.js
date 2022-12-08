@@ -29,7 +29,7 @@ class VariableController {
             const createdTableVari = await TableVariable.create(req.body);
             const idTable = createdTableVari._id
             await tableVariable.updateOne({idTableVariable: idTable});
-            const updateTableFixend = await UserModel.findById(idUser, "idTableFixend").exec();
+            const updateTableFixend = await UserModel.findById(idUser, "idTableVariable").exec();
             return res.status(200).json({ message: "Tabela criada com sucesso!",  updateTableFixend});
         } catch {
             return res.status(500).json({message: "Erro no servidor ao criar, tente novamente mais tarde!"});
