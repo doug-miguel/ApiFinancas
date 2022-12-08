@@ -74,7 +74,7 @@ class UserController {
         }
     }
 
-    async login(req, res) {
+    async authLogin(req, res) {
         const {email, password} = req.body;
         const user = await UserModel.findOne({ email });
         

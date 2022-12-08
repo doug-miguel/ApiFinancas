@@ -11,7 +11,7 @@ routes.post('/auth/register', authController.create);
 
 routes.post('/auth/update', authController.update);
 
-routes.post('/login', authController.login);
+routes.post('/login', authController.authLogin);
 
 routes.delete('/auth/delete/:id', authController.delete);
 
